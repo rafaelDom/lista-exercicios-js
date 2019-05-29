@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Ex14</title>
+</head>
+
+<body>
+    <script>
+        /*
+        Faça um programa receba dois valores e imprima qual é o maior número digitado.
+        */
+        window.onload = function () {
+            let primeiroValor = prompt('Digite o primeiro valor:')
+            let segundoValor = prompt('Digite o segundo valor:')
+
+            if (validarNumero(primeiroValor, segundoValor)) {
+                imprimir(primeiroValor, segundoValor)
+            }
+        }
+
+        function validarNumero(primeiroValor, segundoValor) {
+            let isValid = false
+
+            if (primeiroValor == '' || segundoValor == '') {
+                alert('Os dois valores devem ser digitados!')
+            } else if (isNaN(primeiroValor) || isNaN(segundoValor)) {
+                alert('Somente números são válidos!')
+            } else if (primeiroValor == segundoValor) {
+                alert('Os números são iguais!')
+            } else {
+                isValid = true
+            }
+
+            return isValid
+        }
+
+        function verificarNumMaior(primeiroValor, segundoValor) {
+
+            if (primeiroValor > segundoValor) {
+                return primeiroValor
+            } else {
+                return segundoValor
+            }
+        }
+
+        function imprimir(primeiroValor, segundoValor) {
+            alert(verificarNumMaior(primeiroValor, segundoValor))
+        }
+    </script>
+</body>
+
+</html>

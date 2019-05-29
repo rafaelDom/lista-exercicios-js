@@ -1,0 +1,84 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Ex15</title>
+</head>
+
+<body>
+    <script>
+        /*
+            Faça um programa que receba 4 notas de um aluno, calcule e imprima a média aritmética
+            das notas e a mensagem de APROVADO para média superior ou igual a 7,0 RECUPERAÇÃO para
+            notas entre 5.0 e 7,0 ou a mensagem de REPROVADO para média inferior a 5,0.
+        */
+
+        window.onload = function () {
+            let notas = [];
+            for (let index = 0; index < 4; index++) {
+                notas[index] = parseFloat(prompt(`Digite a ${index + 1}º nota:`))
+            }
+
+            if (validarNotas(notas)) {
+                imprimir(notas)
+            }
+        }
+
+        function validarNotas(notas) {
+            let isValid = false
+
+            for (let index = 0; index < notas.length; index++) {
+                if (notas[index] == '') {
+                    alert(`A ${index + 1}º deve ser preenchida!`)
+                    isValid = false
+                } else if (isNaN(notas[index])) {
+                    alert(`A ${index + 1}º deve ser número!`)
+                    isValid = false
+                } else {
+                    isValid = true
+                }
+            }
+
+            return isValid
+        }
+
+        function calcularMedia(notas) {
+            let media;
+            let somaNotas;
+
+            for (let index = 0; index < notas.length; index++) {
+                somaNotas += notas[index]
+            }
+            parseFloat(media) += parseFloat(somaNotas) / 4;
+
+            alert(media)
+
+            return media;
+        }
+
+        function statusAluno(media) {
+            if (media > 7) {
+                return 'Aprovado'
+            } else if (media <= 7 && media >= 5) {
+                return 'Recuperação'
+            } else if (media < 5) {
+                return 'Reprovado'
+            }
+        }
+
+        function imprimir(notas) {
+            let msg =
+                `
+                    A média do aluno é ${calcularMedia(notas)}.
+                    ${statusAluno(calcularMedia(notas))}
+                 `
+            alert(msg)
+        }
+    </script>
+
+</body>
+
+</html>

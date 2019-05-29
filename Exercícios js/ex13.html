@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Ex13</title>
+</head>
+
+<body>
+    <script>
+        /*
+        Faça um programa que receba um número de usuário e exiba este
+        número, apenas se for par.
+        */
+
+        window.onload = function () {
+            let numero = parseInt(prompt('Digite um número inteiro:'))
+
+            if (validarNumero(numero) && verificarNum(numero)) {
+                imprimir(numero)
+            }
+        }
+
+        function validarNumero(numero) {
+            let isValid = false
+
+            if (numero == '') {
+                alert('Favor digitar um número!')
+            } else if (isNaN(numero)) {
+                alert('Somente números são válidos!')
+            } else {
+                isValid = true
+            }
+
+            return isValid
+        }
+
+        function verificarNum(numero) {
+
+            if (numero % 2 == 0) {
+                return true
+            }
+        }
+
+        function imprimir(numero) {
+            alert(numero)
+        }
+    </script>
+</body>
+
+</html>

@@ -5,15 +5,15 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
-    <title>Ex07</title>
+    <title>Ex08</title>
 </head>
 
 <body>
     <script>
         /*
         Faça um programa que receba o nome, cargo e salário de um funcionário.
-         Calcule o salário acrescido de 10%. Ao final exiba o nome, o cargo e 
-         o novo salário desse funcionário.
+        Se o funcionário ganhar abaixo de 1000 reais, calcule o salário acrescido de 10%.
+         Ao final exiba o nome, o cargo e o salário desse funcionário.
         */
 
         window.onload = function () {
@@ -26,7 +26,7 @@
             }
         }
 
-        function validarDados(nome, cargo, salario){
+        function validarDados(nome, cargo, salario) {
             let isValid = false
 
             if (nome == '') {
@@ -56,9 +56,15 @@
         }
 
         function salarioAcrescidoDezPorCento(salario) {
-            let salarioAcrescidoDezPorCento = salario += salario / 10
+            let salarioAcrescidoDezPorCento
 
-            return salarioAcrescidoDezPorCento
+            if (salario < 1000) {
+                salarioAcrescidoDezPorCento = salario += salario * 0.1
+                return salarioAcrescidoDezPorCento
+            } else {
+                return salario
+            }
+
         }
 
         function imprimir(nome, cargo, salario) {
@@ -70,8 +76,9 @@
                 `
             alert(msg)
         }
-
     </script>
+
+
 </body>
 
 </html>

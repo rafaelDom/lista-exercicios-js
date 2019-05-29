@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Ex10</title>
+</head>
+
+<body>
+
+    <script>
+        /*
+        Elabore um programa para cálculo de preços de produtos que solicite
+        o preço de compra do produto e o percentual a ser aplicado em cima
+        desse valor para a venda. Calcule e exiba o preço de venda do produto.
+         Se o percentual a ser aplicado for inferior a 50%, exiba uma mensagem
+         informando ao usuário que o produto será vendido com uma margem muito pequena de lucro.
+
+        */
+
+        window.onload = function () {
+            let preco = parseFloat(prompt('Digite o preço de compra:'))
+            let percentual = parseFloat(prompt('Digite o percentual:'))
+
+            if (validarDados(preco, percentual)) {
+                imprimir(preco, percentual)
+            }
+        }
+
+        function validarDados(preco, percentual) {
+            let isValid = false;
+
+            if (preco == '' || percentual == '') {
+                alert('O percentual e preço devem ser digitados!')
+            } else if (isNaN(percentual) || isNaN(preco)) {
+                alert('O percentual e preço devem ser números!')
+            } else {
+                isValid = true;
+            }
+
+            return isValid;
+        }
+
+        function calcularPrecoVenda(preco, percentual) {
+            let precoVenda = preco += (preco * (percentual / 100))
+
+            return precoVenda
+        }
+
+        function imprimir(preco, percentual) {
+            let msgPequenoLucro = 'Esse produto será vendido com uma margem pequena de lucro!';
+            let msgPrecoVenda =
+                `
+                    O preço de venda do produto é ${calcularPrecoVenda(preco, percentual)}.
+                `
+            if (percentual < 50) {
+                alert(msgPrecoVenda + '--->' + msgPequenoLucro)
+            } else {
+                alert(msgPrecoVenda)
+            }
+        }
+    </script>
+
+</body>
+
+</html>
