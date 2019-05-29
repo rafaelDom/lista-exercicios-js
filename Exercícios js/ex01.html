@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Ex01</title>
+</head>
+
+<body>
+    <script>
+        /*Faça um programa que receba a idade de uma pessoa em anos e
+            imprima essa idade em: Meses, Dias, Horas, Minutos.*/
+        window.onload = function () {
+            let idade = prompt('Digite a idade em anos:')
+
+            if (validarIdade(idade)) {
+                imprimir(idade)
+            }
+
+
+        }
+
+        function validarIdade(idade) {
+            let isValid = false
+
+            if (idade == '') {
+                alert('Entre com um número!')
+            } else if (isNaN(idade)) {
+                alert('A idade deve ser em número!')
+            } else if (idade.includes('.')) {
+                alert('A idade deve ser um número inteiro!')
+            } else {
+                isValid = true
+            }
+            return isValid
+        }
+        function imprimir(idade) {
+            let msg =
+                `
+                       A idade em meses é: ${idadeMeses(idade)}
+                       A idade em dias é: ${idadeDias(idade)}
+                       A idade em horas é: ${idadeHoras(idade)}
+                       A idade em minutos é: ${idadeMinutos(idade)}
+                    `
+            alert(msg)
+        }
+
+        function idadeMeses(idade) {
+            let idadeMeses = idade * 12
+            return idadeMeses
+        }
+
+        function idadeDias(idade) {
+            idadeDias = idade * 365
+            return idadeDias
+        }
+
+        function idadeHoras(idade) {
+            idadeHoras = (idade * 365) * 24
+            return idadeHoras
+        }
+
+        function idadeMinutos(idade) {
+            idadeMinutos = ((idade * 365) * 24) * 60
+            return idadeMinutos
+        }
+    </script>
+</body>
+
+</html>

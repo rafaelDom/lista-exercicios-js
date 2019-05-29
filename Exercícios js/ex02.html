@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Ex02</title>
+</head>
+
+<body>
+    <script>
+        /*
+        Faça um programa que receba o ano de nascimento de uma pessoa e
+        o ano atual. Calcule e imprima:
+            a. A idade dessa pessoa
+            b. Essa idade convertida em semana
+        */
+        window.onload = function () {
+            let anoNascimento = prompt('Digite o ano de nascimento com 4 digitos:')
+            let anoAtual = prompt('Digite o ano de atual com 4 digitos:')
+
+            if (validarDados(anoNascimento, anoAtual)) {
+                imprimir(anoNascimento, anoAtual)
+            }
+
+
+        }
+
+        function validarDados(anoNascimento, anoAtual) {
+            let isValid = false
+
+            if (anoNascimento == '' || anoAtual == '') {
+                alert('O ano de nascimento e o ano atual devem ser digitados!')
+            } else if (isNaN(anoNascimento) || isNaN(anoAtual)) {
+                alert('O ano de nascimento e o ano atual deve ser número!')
+            } else if (anoNascimento.includes('.') || anoAtual.includes('.')) {
+                alert('O ano de nascimento e o ano atual devem ser  números inteiro!')
+            } else if (anoNascimento.length != 4 || anoAtual.length != 4) {
+                alert('O ano de nascimento e o ano atual devem conter 4 digitos!')
+            } else if (anoNascimento > anoAtual) {
+                alert('O ano atual deve ser maio que o ano de nascimento!')
+            }
+            else {
+                isValid = true
+            }
+
+            return isValid
+        }
+
+        function idade(anoNascimento, anoAtual) {
+            let idade = anoAtual - anoNascimento
+
+            return idade
+        }
+
+        function idadeSemanas(anoNascimento, anoAtual) {
+            let idade = anoAtual - anoNascimento
+            let idadeDias = idade * 365
+            let idadeSemanas = idadeDias / 7
+
+            return idadeSemanas
+        }
+
+        function imprimir(anoNascimento, anoAtual) {
+            let msg =
+                `
+                A idade é ${idade(anoNascimento, anoAtual)}
+                A idade convertidade em semanas é ${idadeSemanas(anoNascimento, anoAtual).toFixed(2)}
+            `
+            alert(msg)
+        }
+    </script>
+
+</body>
+
+</html>

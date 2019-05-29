@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Ex07</title>
+</head>
+
+<body>
+    <script>
+        /*
+        Faça um programa que receba o nome, cargo e salário de um funcionário.
+         Calcule o salário acrescido de 10%. Ao final exiba o nome, o cargo e 
+         o novo salário desse funcionário.
+        */
+
+        window.onload = function () {
+            let nome = prompt('Digite o nome do funcionário:')
+            let cargo = prompt('Digite o cargo:')
+            let salario = parseFloat(prompt('Digite o salário:'))
+
+            if (validarDados(nome, cargo, salario)) {
+                imprimir(nome, cargo, salario)
+            }
+        }
+
+        function validarDados(nome, cargo, salario){
+            let isValid = false
+
+            if (nome == '') {
+                alert('Favor digitar o nome!')
+            } else {
+                isValid = true;
+            }
+
+            if (cargo == '') {
+                alert('Favor digitar o cargo!')
+                isValid = false
+            } else {
+                isValid = true
+            }
+
+            if (salario == '') {
+                alert('Favor digitar o salário!')
+                isValid = false
+            } else if (isNaN(salario)) {
+                alert('O salario deve ser em números!')
+                isValid = false
+            } else {
+                isValid = true
+            }
+
+            return isValid
+        }
+
+        function salarioAcrescidoDezPorCento(salario) {
+            let salarioAcrescidoDezPorCento = salario += salario / 10
+
+            return salarioAcrescidoDezPorCento
+        }
+
+        function imprimir(nome, cargo, salario) {
+            let msg =
+                `
+                    O nome da pessoa é ${nome}.
+                    O cargo é ${cargo}.
+                    O novo salário é ${salarioAcrescidoDezPorCento(salario)}
+                `
+            alert(msg)
+        }
+
+    </script>
+</body>
+
+</html>

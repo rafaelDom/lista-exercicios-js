@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Ex03</title>
+</head>
+
+<body>
+
+    <script>
+        // Faça um programa que receba um número e exiba o seu dobro.
+        window.onload = function () {
+            let numero = prompt('Digite um número:')
+
+            if (validarNumero(numero)) {
+                imprimir(numero)
+            }
+        }
+
+        function validarNumero(numero) {
+            let isValid = false
+
+            if (numero == '') {
+                alert('Entre com um número!')
+            } else if (isNaN(numero)) {
+                alert('A entrada de dados deve ser em número!')
+            } else {
+                isValid = true
+            }
+            return isValid
+        }
+
+        function dobro(numero) {
+            let dobro = numero * 2
+
+            return dobro
+        }
+
+        function imprimir(numero) {
+            let msg =
+                `
+                    O dobro do número ${numero} é ${dobro(numero)}
+                `
+            alert(msg)
+        }
+
+    </script>
+
+</body>
+
+</html>

@@ -1,0 +1,81 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Ex04</title>
+</head>
+
+<body>
+    <script>
+        /*
+        Faça um programa que receba o nome, o peso e a altura de uma
+        pessoa. Calcule e imprima o nome e o IMC dessa pessoa - IMC = peso
+        / (altura * altura).
+        */
+
+        window.onload = function () {
+            let nome = prompt('Digite o nome:')
+            let peso = prompt('Digite o peso:')
+            let altura = prompt('Digite a altura com . exemplo: 1.81:')
+
+            if (validarDados(nome, peso, altura)) {
+                imprimir(nome, peso, altura)
+            }
+        }
+
+        function validarDados(nome, peso, altura) {
+            let isValid = false;
+
+            if (nome == '') {
+                alert('Favor digitar o nome!')
+            } else {
+                isValid = true
+            }
+            if (peso == '') {
+                alert('Favor digitar o peso!')
+                isValid = false;
+            } else if (isNaN(peso)) {
+                alert('O peso deve ser número!')
+                isValid = false;
+            } else {
+                isValid = true
+            }
+            if (altura == '') {
+                alert('Favor digitar a altura!')
+                isValid = false;
+            } else if (isNaN(altura)) {
+                alert('A altura deve ser número!')
+                isValid = false;
+            } else if (!altura.includes('.')) {
+                alert('A altura deve conter ponto(.)!')
+                isValid = false;
+            } else {
+                isValid = true
+            }
+
+
+            return isValid;
+        }
+
+        function calcularIMC(peso, altura) {
+            let imc = peso / (altura * altura)
+
+            return imc
+        }
+
+        function imprimir(nome, peso, altura) {
+            let msg =
+                `
+                    O IMC do(a) ${nome} é ${calcularIMC(peso, altura).toFixed(2)}
+                `
+            alert(msg)
+        }
+
+    </script>
+
+</body>
+
+</html>

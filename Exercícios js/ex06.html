@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Ex06</title>
+</head>
+
+<body>
+    <script>
+
+        /*
+        Faça um programa que receba a medida em polegadas e exiba esse número em centímetros.
+        */
+        window.onload = function () {
+            let medidaPolegadas = prompt('Digite a medida em polegadas:')
+
+            if (validar(medidaPolegadas)) {
+                imprimir(medidaPolegadas)
+            }
+        }
+
+        function validar(medidaPolegadas ) {
+            let isValid = false;
+
+            if (medidaPolegadas  == '') {
+                alert('Favor digitar a medida em polegadas!')
+            } else if (isNaN(medidaPolegadas )) {
+                alert('O valor informado dever ser em número!')
+            } else {
+                isValid = true
+            }
+
+            return isValid
+        }
+
+        function polegadasForCentimetros(medidaPolegadas) {
+            let centimetros = medidaPolegadas * 2.5
+
+            return centimetros
+        }
+
+        function imprimir(medidaPolegadas) {
+            let msg =
+                `
+                    ${medidaPolegadas}  polegada(s) equivale a ${polegadasForCentimetros(medidaPolegadas)} centímetros.
+                `
+            alert(msg)
+        }
+    </script>
+</body>
+
+</html>
