@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Ex17</title>
+</head>
+
+<body>
+    <script>
+        /*
+        Faça um programa que receba um número de usuário e exiba este número, apenas se for par. 
+        Caso contrário informe apenas “DIGITE APENAS NÚMEROS PARES”.
+        */
+
+        window.onload = function () {
+            let numero = parseInt(prompt('Digite um múmero:'))
+
+            if (validarNumero(numero)) {
+                imprimir(numero)
+            }
+
+        }
+
+        function validarNumero(numero) {
+            let isValid = false
+
+            if (numero == '') {
+                alert('Digite um número!')
+            } else if (isNaN(numero)) {
+                alert('Favor digitar um número!')
+            } else {
+                isValid = true
+            }
+
+            return isValid
+        }
+
+        function verificarNumeroPar(numero) {
+            if (numero % 2 == 0) {
+                return numero
+            } else {
+                return 'DIGITE APENAS NÚMEROS PARES'
+            }
+        }
+
+        function imprimir(numero) {
+            let msg =
+                `
+                    ${verificarNumeroPar(numero)}
+                `
+
+            alert(msg)
+        }
+
+    </script>
+</body>
+
+</html>

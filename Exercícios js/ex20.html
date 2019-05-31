@@ -1,0 +1,122 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Ex20</title>
+</head>
+
+<body>
+    <script>
+        /*
+        Faça um programa que receba o nome, salário e código correspondente ao cargo do funcionário 
+        e imprima o seu nome, salário, código, cargo,Percentual de aumento e salário com aumento
+         de acordo com o percentual da tabela abaixo:
+
+                        Código	            Cargo   	    Percentual
+                            1	          Escriturário	        50%
+                            2	          Secretário	        35%
+                            3	            Caixa	            20%
+                            4	           Gerente	            10%
+                            5	            Diretor	        O cargo não receberá aumento
+        */
+
+        window.onload = function () {
+            let nome = prompt('Digite o nome:')
+            let salario = parseFloat(prompt('Digite o salário:'))
+            let codigo = parseInt(prompt('Digite o código:'))
+
+            if (validarDados(nome, salario, codigo)) {
+                imprimir(nome, salario, codigo)
+            }
+
+
+        }
+
+        function validarDados(nome, salario, codigo) {
+            let isValid = false
+
+            if (nome == '') {
+                alert('Favor digitar um nome!')
+            } else if (salario == '') {
+                alert('Favor digitar um salario!')
+            } else if (isNaN(salario)) {
+                alert('O salário deve ser em números!')
+            } else if (codigo == '') {
+                alert('Favor digitar um código!')
+            } else if (isNaN(codigo)) {
+                alert('O código deve ser em números!')
+            } else if (codigo < 1 && codigo > 5) {
+                alert('Código fornecido não consta na tabela para o cálculo!')
+            } else {
+                isValid = true
+            }
+
+            return isValid
+        }
+
+        function calcularAumentoSalario(codigo, salario) {
+            let salarioComAumento = 0
+
+            if (codigo == 1) {
+                salarioComAumento = salario + ((salario * 50) / 100)
+            } else if (codigo == 2) {
+                salarioComAumento = salario + ((salario * 35) / 100)
+            } else if (codigo == 3) {
+                salarioComAumento = salario + ((salario * 20) / 100)
+            } else if (codigo == 4) {
+                salarioComAumento = salario + ((salario * 10) / 100)
+            } else if (codigo == 5) {
+                salarioComAumento = salario
+            }
+
+            return salarioComAumento
+        }
+
+        function verificarCargo(codigo) {
+            if (codigo == 1) {
+                return 'Escriturário'
+            } else if (codigo == 2) {
+                return 'Secretário'
+            } else if (codigo == 3) {
+                return 'Caixa'
+            } else if (codigo == 4) {
+                return 'Gerente'
+            } else if (codigo == 5) {
+                return 'Diretor'
+            }
+        }
+
+        function verificarPercentualAumento(codigo) {
+            if (codigo == 1) {
+                return '50%'
+            } else if (codigo == 2) {
+                return '35%'
+            } else if (codigo == 3) {
+                return '20%'
+            } else if (codigo == 4) {
+                return '10%'
+            } else if (codigo == 5) {
+                return 'O cargo não receberá aumento!'
+            }
+        }
+
+        function imprimir(nome, salario, codigo) {
+            let msg =
+                `
+                    O nome do funcionário é ${nome}.
+                    O salário do funcionário é ${salario}.
+                    O código do funcionário é ${codigo}.
+                    O cargo do funcionário é ${verificarCargo(codigo)}.
+                    O Percentual  ${verificarPercentualAumento(codigo)}.
+                    O salário com aumento é ${calcularAumentoSalario(codigo, salario)}.
+                `
+
+            alert(msg)
+        }
+    </script>
+</body>
+
+</html>

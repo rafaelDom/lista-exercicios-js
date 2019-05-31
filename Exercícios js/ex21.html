@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Ex21</title>
+</head>
+
+<body>
+    <script>
+        /*
+        Faça um programa que receba 15 números inteiros e imprima na tela
+        a somatória dos 15 números.
+        */
+
+        window.onload = function () {
+            let numeros = []
+
+            for (let index = 0; index < 15; index++) {
+                numeros[index] = parseInt(prompt(`Digite o ${index + 1}º número`))
+            }
+
+            if (validarNumeros(numeros)) {
+                imprimir(numeros)
+            }
+        }
+
+        function validarNumeros(numeros) {
+            let isValid = false
+
+            for (let index = 0; index < numeros.length; index++) {
+                if (numeros[index] == '') {
+                    alert(`Favor digitar o ${index + 1} número!`)
+                    isValid = false
+                } else if (isNaN(numeros[index])) {
+                    alert(`O ${index + 1} deve ser número!`)
+                    isValid = false
+                } else {
+                    isValid = true
+                }
+            }
+            return isValid
+        }
+
+        function somarNumeros(numeros) {
+            let somaDosNumeros = 0
+
+            for (let index = 0; index < numeros.length; index++) {
+                somaDosNumeros += numeros[index]
+            }
+
+            return somaDosNumeros
+        }
+
+        function imprimir(numeros) {
+            msg =
+                `
+                    A soma dos números é ${somarNumeros(numeros)}
+                `
+            alert(msg)
+        }
+    </script>
+
+</body>
+
+</html>

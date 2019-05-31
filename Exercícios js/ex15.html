@@ -34,9 +34,11 @@
                 if (notas[index] == '') {
                     alert(`A ${index + 1}º deve ser preenchida!`)
                     isValid = false
+                    break
                 } else if (isNaN(notas[index])) {
                     alert(`A ${index + 1}º deve ser número!`)
                     isValid = false
+                    break
                 } else {
                     isValid = true
                 }
@@ -46,15 +48,13 @@
         }
 
         function calcularMedia(notas) {
-            let media;
-            let somaNotas;
+            let media = 0;
+            let somaNotas = 0;
 
             for (let index = 0; index < notas.length; index++) {
                 somaNotas += notas[index]
             }
-            parseFloat(media) += parseFloat(somaNotas) / 4;
-
-            alert(media)
+            media = somaNotas / 4
 
             return media;
         }

@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Ex19</title>
+</head>
+
+<body>
+    <script>
+        /*
+        Faça um programa que receba a idade de uma pessoa e classifique usando o seguinte critério:
+
+                    0 a 2 anos	Recém-Nascido
+                    Recém-Nascido	Criança
+                    12 a 19 anos	Adolescente
+                    20 a 55 anos	Adulto
+                    Acima de 55 anos	Idoso
+
+        */
+
+        window.onload = function () {
+            let idade = parseInt(prompt('Digite a idade:'))
+
+            if (validarIdade(idade)) {
+                imprimir(idade)
+            }
+        }
+
+        function validarIdade(idade) {
+            let isValid = false
+
+            if (idade == '') {
+                alert('Digite uma idade!')
+            } else if (isNaN(idade)) {
+                alert('A idade deve ser em números!')
+            } else {
+                isValid = true
+            }
+
+            return isValid;
+        }
+
+        function classificarIdade(idade) {
+
+            if (idade < 0) {
+                return 'Digite uma idade válida'
+            } else if (idade >= 0 && idade <= 2) {
+                return 'Recém-Nascido'
+            } else if (idade > 2 && idade < 12) {
+                return 'Criança'
+            } else if (idade >= 12 && idade <= 19) {
+                return 'Adolescente'
+            } else if (idade >= 20 && idade <= 55) {
+                return 'Adulto'
+            } else if (idade > 55) {
+                return 'Idoso'
+            }
+        }
+
+        function imprimir(idade) {
+            let msg =
+                `
+                ${idade} ---> ${classificarIdade(idade)}
+            `
+
+            alert(msg)
+        }
+    </script>
+</body>
+
+</html>

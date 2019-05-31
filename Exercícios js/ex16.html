@@ -1,0 +1,90 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Ex16</title>
+</head>
+
+<body>
+    <script>
+        /*
+        Uma empresa decide dar aumento aos funcionários de acordo com o seu cargo, disposto na tabela abaixo:
+                        Cargo	        % Aumento
+                        Produção	        6.5
+                        Administrativo	    7.5
+                        Diretoria	        12
+    
+        De acordo com a tabela acima faça um programa que receba o cargo e o salário de 
+        um funcionário e calcule e imprima o salário reajustado.
+    
+        */
+        window.onload = function () {
+            let cargo = prompt('Digite o cargo:')
+            let salario = parseFloat(prompt('Digite o salário:'))
+
+            if (validarDados(cargo, salario)) {
+                imprimir(cargo, salario)
+            }
+
+        }
+
+        function validarDados(cargo, salario) {
+            let isValid = false
+
+            if (cargo == '' || salario == '') {
+                alert('Digite o cargo e o salário!')
+            } else if (isNaN(salario)) {
+                alert('O salario deve ser em números!')
+            } else {
+                isValid = true
+            }
+
+            return isValid
+        }
+
+        function calcularReajusteSalario(cargo, salario) {
+            let salarioReajustado = 0
+            let cargoStr = removerAcentos(cargo).toUpperCase();
+
+
+            if (cargoStr == 'PRODUCAO') {
+                salarioReajustado = salario + ((salario * 6.5) / 100)
+            } else if (cargoStr == 'ADMINISTRATIVO') {
+                salarioReajustado = salario + ((salario * 7.5) / 100)
+            } else if (cargoStr == 'DIRETORIA') {
+                salarioReajustado = salario + ((salario * 12) / 100)
+            } else {
+                salarioReajustado = salario
+            }
+
+            return salarioReajustado
+        }
+
+
+        function removerAcentos(text) {
+            text = text.replace(new RegExp('[ÁÀÂÃ]', 'gi'), 'a');
+            text = text.replace(new RegExp('[ÉÈÊ]', 'gi'), 'e');
+            text = text.replace(new RegExp('[ÍÌÎ]', 'gi'), 'i');
+            text = text.replace(new RegExp('[ÓÒÔÕ]', 'gi'), 'o');
+            text = text.replace(new RegExp('[ÚÙÛ]', 'gi'), 'u');
+            text = text.replace(new RegExp('[Ç]', 'gi'), 'c');
+            return text;
+        }
+
+        function imprimir(cargo, salario) {
+            let msg =
+                `
+                O salário ${salario} reajustado para o cargo ${cargo}
+                é ${calcularReajusteSalario(cargo, salario)}
+                
+                `
+            alert(msg)
+        }
+    </script>
+
+</body>
+
+</html>
